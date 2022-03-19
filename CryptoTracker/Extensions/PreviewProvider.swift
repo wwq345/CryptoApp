@@ -23,6 +23,10 @@ class DeveloperPreview{
     
     let hvm = HomeViewModel()
     
+    let statvm1 = StatisticModel(title: "Market Cap", value: "$12.56n", percentageChange: 25.34)
+    let statvm2 = StatisticModel(title: "Total Volume", value: "$100.34M", percentageChange: 44.6)
+    let statvm3 = StatisticModel(title: "Portfolio", value: "$54.3k", percentageChange: -12.84)
+    
     let coin = CoinModel(
         id: "anchor-protocol",
         symbol: "anc",
