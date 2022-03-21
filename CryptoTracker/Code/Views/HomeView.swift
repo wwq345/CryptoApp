@@ -105,7 +105,7 @@ extension HomeView{
     
     private var listOfPortfolioIconsView: some View{
         List{
-            ForEach(hvm.allCoins){ coin in
+            ForEach(hvm.portfolioCoins){ coin in
                 CoinRowView(coin: coin, showHoldingColumn: self.$showPortfolio)
             }
         }

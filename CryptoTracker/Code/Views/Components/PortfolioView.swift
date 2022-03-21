@@ -45,7 +45,7 @@ struct PortfolioView: View {
                         Image(systemName: self.showCheckmark ? "checkmark" : "")
                         
                         Button {
-                            print("as")
+                            saveButtonPressed()
                         } label: {
                             Text("SAVE")
                         }
@@ -53,6 +53,11 @@ struct PortfolioView: View {
                             (selectedCoin != nil && selectedCoin?.currentHoldings != Double(quantityText)) ? 1.0 : 0.0
                         )
                     }
+                }
+            }
+            .onChange(of: hvm.searchText) { newValue in
+                if newValue == ""{
+                    removeSelectedCoin()
                 }
             }
         }
@@ -64,8 +69,6 @@ struct PortfolioView_Previews: PreviewProvider {
         Group {
             PortfolioView()
                 .environmentObject(dev.hvm)
-            PortfolioView()
-                .environmentObject(dev.hvm)
         }
     }
 }
@@ -74,7 +77,7 @@ extension PortfolioView{
     private var coinLogoListView: some View{
         ScrollView(.horizontal, showsIndicators: false){
             LazyHStack(spacing: 30){
-                ForEach(hvm.allCoins){item in
+                ForEach(hvm.searchText == "" ? hvm.portfolioCoins : hvm.allCoins){item in
                     CoinLogoView(coin: item)
                         .onTapGesture {
                             withAnimation(.easeIn){
@@ -88,6 +91,18 @@ extension PortfolioView{
                 }
             }
         }
+    }
+    
+    private func updateSelectedCoin(coin: CoinModel){
+        selectedCoin = coin
+        
+        if let portfolioCoin = hvm.portfolioCoins.first(where: { $0.id == coin.id }),
+           let amount = portfolioCoin.currentHoldings {
+            quantityText = "\(amount)"
+        }else{
+            quantityText = ""
+        }
+        
     }
     
     private func getCurrentValue() -> Double{
@@ -127,7 +142,12 @@ extension PortfolioView{
     }
     
     private func saveButtonPressed(){
-        guard let coin = selectedCoin else { return }
+        guard let coin = selectedCoin,
+              let amount = Double(quantityText)
+        else { return }
+        
+        hvm.updatePortfolio(coin: coin, amount: amount)
+        
         
         withAnimation(.easeIn){
             showCheckmark = true

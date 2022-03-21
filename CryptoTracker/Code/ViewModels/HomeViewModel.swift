@@ -20,8 +20,9 @@ class HomeViewModel: ObservableObject{
         StatisticModel(title: "Title4", value: "Value4", percentageChange: -29.2)
     ]
     
-    private let coindataService = CoinDataService()
-    private let marketdataSerivice = MarketDataService()
+    private let coinDataService = CoinDataService()
+    private let marketDataSerivice = MarketDataService()
+    private let portfolioDataService = PortfolioDataService()
     private var cancellable = Set<AnyCancellable>()
     
     init(){
@@ -38,16 +39,16 @@ class HomeViewModel: ObservableObject{
 //            .store(in: &cancellable)
         
         $searchText
-            .combineLatest(coindataService.$allCoins)
+            .combineLatest(coinDataService.$allCoins)
         //this will delay for 0.5 seconds before map(DispathQueue) workded
             .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
         //transform output into some data(get value)
-            .map{ (text, startingCons) -> [CoinModel] in
+            .map{ (text, startingCoins) -> [CoinModel] in
                 guard !text.isEmpty else{
-                    return startingCons
+                    return startingCoins
                 }
                 let lowerText = text.lowercased()
-                let filteredCoins = startingCons.filter { (coin) -> Bool in
+                let filteredCoins = startingCoins.filter { (coin) -> Bool in
                     return coin.name.lowercased().contains(lowerText) ||
                     coin.symbol.lowercased().contains(lowerText) ||
                     coin.id.lowercased().contains(lowerText)
@@ -60,7 +61,7 @@ class HomeViewModel: ObservableObject{
             }
             .store(in: &cancellable)
         
-        marketdataSerivice.$marketData
+        marketDataSerivice.$marketData
             .map { (markDataModel) -> [StatisticModel] in
                 var stats: [StatisticModel] = []
                 
@@ -90,5 +91,25 @@ class HomeViewModel: ObservableObject{
                 self?.statistics = returnStats
             }
             .store(in: &cancellable)
+        
+        $allCoins
+            .combineLatest(portfolioDataService.$saveEntity)
+            .map{ (coinModel, portfolioEntity) -> [CoinModel] in
+                coinModel
+                    .compactMap { (coin) -> CoinModel? in
+                        guard let entity = portfolioEntity.first(where: { $0.coinID == coin.id}) else{
+                            return nil
+                        }
+                        return coin.updateHoldings(amount: entity.amount)
+                    }
+            }
+            .sink { [weak self] (returnCoins) in
+                self?.portfolioCoins = returnCoins
+            }
+            .store(in: &cancellable)
+    }
+    
+    func updatePortfolio(coin: CoinModel, amount: Double){
+        portfolioDataService.updatePortfolio(amount: amount, coin: coin)
     }
 }
