@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct StatisticView: View {
-    let statvm: StatisticModel
+    let stat: StatisticModel
     var body: some View {
         VStack(alignment: .leading){
-            Text(self.statvm.title)
+            Text(self.stat.title)
                 .font(.caption)
                 .foregroundColor(Color.theme.secondaryText)
-            Text(self.statvm.value)
+            Text(self.stat.value)
                 .font(.headline)
                 .foregroundColor(Color.theme.accent)
             
@@ -22,21 +22,21 @@ struct StatisticView: View {
                 
                 Image(systemName: "triangle.fill")
                     .font(.caption2)
-                    .rotationEffect(Angle(degrees: (self.statvm.percentageChange ?? 0 >= 0) ? 0 : 180))
+                    .rotationEffect(Angle(degrees: (self.stat.percentageChange ?? 0 >= 0) ? 0 : 180))
                 
                 
-                Text(self.statvm.percentageChange?.asPercentString() ?? "")
+                Text(self.stat.percentageChange?.asPercentString() ?? "")
                     .font(.caption)
                     .bold()
             }
-            .foregroundColor((self.statvm.percentageChange ?? 0 >= 0) ? .theme.green : .theme.red)
-            .opacity((self.statvm.percentageChange == nil) ? 0 : 1)
+            .foregroundColor((self.stat.percentageChange ?? 0 >= 0) ? .theme.green : .theme.red)
+            .opacity((self.stat.percentageChange == nil) ? 0 : 1)
         }
     }
 }
 
 struct StatisticView_Previews: PreviewProvider {
     static var previews: some View {
-        StatisticView(statvm: dev.statvm3)
+        StatisticView(stat: dev.statvm3)
     }
 }
