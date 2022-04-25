@@ -47,6 +47,11 @@
 		1B5E4EC327FED36A008A96F2 /* CoinDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E4EC227FED36A008A96F2 /* CoinDetailService.swift */; };
 		1B5E4EC928040B9B008A96F2 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E4EC828040B9A008A96F2 /* ChartView.swift */; };
 		1B5E4ECB2804190B008A96F2 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E4ECA2804190B008A96F2 /* DateExtension.swift */; };
+		1BEF5519280812DB001844C4 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEF5518280812DB001844C4 /* StringExtension.swift */; };
+		1BEF551D28094813001844C4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEF551C28094813001844C4 /* SettingsView.swift */; };
+		1BEF551F280948CD001844C4 /* XMarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEF551E280948CD001844C4 /* XMarkButton.swift */; };
+		1BEF552328095977001844C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BEF552228095977001844C4 /* LaunchScreen.storyboard */; };
+		1BEF552528095D5F001844C4 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEF552428095D5F001844C4 /* LaunchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +115,11 @@
 		1B5E4EC227FED36A008A96F2 /* CoinDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetailService.swift; sourceTree = "<group>"; };
 		1B5E4EC828040B9A008A96F2 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		1B5E4ECA2804190B008A96F2 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		1BEF5518280812DB001844C4 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		1BEF551C28094813001844C4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		1BEF551E280948CD001844C4 /* XMarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMarkButton.swift; sourceTree = "<group>"; };
+		1BEF552228095977001844C4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1BEF552428095D5F001844C4 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +213,7 @@
 				1B2C36A127E1E4E000559E38 /* ColorSwift.swift */,
 				1B2C36B027E2E65A00559E38 /* Double.swift */,
 				1B2C36C427E438DC00559E38 /* UIApplication.swift */,
+				1BEF5518280812DB001844C4 /* StringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -210,6 +221,8 @@
 		1B2C369D27E1E49400559E38 /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				1BEF55202809593B001844C4 /* Launch */,
+				1BEF551A280947F3001844C4 /* Setting */,
 				1B5E4EC428040846008A96F2 /* chart */,
 				1B2C36B727E31E3100559E38 /* Utilities */,
 				1B2C36B427E30E9500559E38 /* Service */,
@@ -282,6 +295,7 @@
 				1B2C36B827E31ECC00559E38 /* NetworkingManager.swift */,
 				1B2C36C027E33C2C00559E38 /* LocalFileManager.swift */,
 				1B5E4EB327FAD782008A96F2 /* HapticManager.swift */,
+				1BEF551E280948CD001844C4 /* XMarkButton.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -360,6 +374,39 @@
 			children = (
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1BEF551A280947F3001844C4 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				1BEF551B280947FB001844C4 /* Views */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		1BEF551B280947FB001844C4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1BEF551C28094813001844C4 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1BEF55202809593B001844C4 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				1BEF552128095949001844C4 /* View */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
+		1BEF552128095949001844C4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1BEF552228095977001844C4 /* LaunchScreen.storyboard */,
+				1BEF552428095D5F001844C4 /* LaunchView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -466,6 +513,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BEF552328095977001844C4 /* LaunchScreen.storyboard in Resources */,
 				1B2C369B27E1E47E00559E38 /* Assets.xcassets in Resources */,
 				1B2C367827E1E43B00559E38 /* Preview Assets.xcassets in Resources */,
 			);
@@ -498,6 +546,7 @@
 				1B2C36BF27E3301100559E38 /* ImageService.swift in Sources */,
 				1B2C36B627E30EC700559E38 /* CoinDataService.swift in Sources */,
 				1B0CF7E227E71643009A7D52 /* PortfolioContainer.xcdatamodeld in Sources */,
+				1BEF551D28094813001844C4 /* SettingsView.swift in Sources */,
 				1B2C36AD27E2DDF900559E38 /* CoinRowView.swift in Sources */,
 				1B2C36C127E33C2C00559E38 /* LocalFileManager.swift in Sources */,
 				1B5E4EBF27FED10D008A96F2 /* CoinDetailModel.swift in Sources */,
@@ -507,7 +556,9 @@
 				1B2C36A427E1E4FF00559E38 /* HomeView.swift in Sources */,
 				1B0CF7D727E5B0A3009A7D52 /* MarkDataModel.swift in Sources */,
 				1B5E4EBC27FEB673008A96F2 /* DetailView.swift in Sources */,
+				1BEF552528095D5F001844C4 /* LaunchView.swift in Sources */,
 				1B5E4EC127FED32E008A96F2 /* DetailViewModel.swift in Sources */,
+				1BEF551F280948CD001844C4 /* XMarkButton.swift in Sources */,
 				1B2C36C527E438DC00559E38 /* UIApplication.swift in Sources */,
 				1B2C367327E1E43900559E38 /* ContentView.swift in Sources */,
 				1B2C36A727E1E67000559E38 /* CircleButtonView.swift in Sources */,
@@ -524,6 +575,7 @@
 				1B5E4EB427FAD783008A96F2 /* HapticManager.swift in Sources */,
 				1B0CF7E427E71720009A7D52 /* PortfolioService.swift in Sources */,
 				1B2C36B127E2E65A00559E38 /* Double.swift in Sources */,
+				1BEF5519280812DB001844C4 /* StringExtension.swift in Sources */,
 				1B2C36BB27E32A6F00559E38 /* ImageView.swift in Sources */,
 				1B5E4EC327FED36A008A96F2 /* CoinDetailService.swift in Sources */,
 				1B2C36AB27E2D37200559E38 /* CoinModel.swift in Sources */,
@@ -693,6 +745,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -722,6 +775,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

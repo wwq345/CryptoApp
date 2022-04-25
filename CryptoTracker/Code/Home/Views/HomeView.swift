@@ -14,6 +14,7 @@ struct HomeView: View {
     @State private var showPortFolioView: Bool = false
     @State private var selectedCoin: CoinModel? = nil
     @State private var showDetailView: Bool = false
+    @State private var showSetting: Bool = false
     
     var body: some View {
         ZStack{
@@ -39,12 +40,21 @@ struct HomeView: View {
                         .listStyle(PlainListStyle())
                         .transition(.move(edge: .leading))
                 }else{
-                    listOfPortfolioIconsView
-                        .listStyle(PlainListStyle())
-                        .transition(.move(edge: .trailing))
+                    ZStack(alignment: .top) {
+                        if hvm.portfolioCoins.isEmpty && hvm.searchText.isEmpty {
+                            portfolioEmptyView
+                        } else {
+                            listOfPortfolioIconsView
+                                .listStyle(PlainListStyle())
+                                .transition(.move(edge: .trailing))
+                        }
+                    }
                 }
                 
                 Spacer()
+            }
+            .sheet(isPresented: $showSetting) {
+                SettingsView()
             }
         }
         .background(
@@ -76,6 +86,8 @@ extension HomeView{
                 .onTapGesture {
                     if showPortfolio{
                         showPortFolioView.toggle()
+                    } else {
+                        showSetting.toggle()
                     }
                 }
                 .background(
@@ -127,6 +139,15 @@ extension HomeView{
         }
         .listStyle(PlainListStyle())
         .transition(.move(edge: .leading))
+    }
+    
+    private var portfolioEmptyView: some View {
+        Text("You haven't added any coins. Please click + button to get started")
+            .font(.callout)
+            .foregroundColor(Color.theme.accent)
+            .fontWeight(.medium)
+            .multilineTextAlignment(.center)
+            .padding(50)
     }
     
     private func segue(coin: CoinModel){

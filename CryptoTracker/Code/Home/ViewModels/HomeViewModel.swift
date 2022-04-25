@@ -54,7 +54,7 @@ class HomeViewModel: ObservableObject{
                     return startingCoins
                 }
                 let lowerText = text.lowercased()
-                var filteredCoins = startingCoins.filter { (coin) -> Bool in
+                let filteredCoins = startingCoins.filter { (coin) -> Bool in
                     return coin.name.lowercased().contains(lowerText) ||
                     coin.symbol.lowercased().contains(lowerText) ||
                     coin.id.lowercased().contains(lowerText)
@@ -156,8 +156,6 @@ class HomeViewModel: ObservableObject{
             return coins.sorted(by: { $0.currentPrice < $1.currentPrice })
         case .priceReversed:
             return coins.sorted(by: { $0.currentPrice > $1.currentPrice })
-        default :
-            return coins
         }
     }
     
